@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Person</title>
+</head>
+<body>
+
+                        <!-- На какой адрес форма "постит" и объект класса Person под ключом person, вложенный в модель -->
+<form th:method="POST" th:action="@{/people}" th:object="${person}">
+                        <!-- Название поля, которое есть у объекта Person которому мы назначаем значение в этом поле HTML формы -->
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name" />
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div> <!-- TL вставит соответсвующий текс ошибки из @Valid -->
+    <br/>
+    <label for="age">Enter age: </label>
+    <input type="text" th:field="*{age}" id="age" />
+    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age error</div>
+    <br/>
+    <label for="email">Enter email: </label>
+    <input type="text" th:field="*{email}" id="email" />
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
+    <br/>
+    <input type="submit" value="Create"/>
+</form>
+
+</body>
+</html>

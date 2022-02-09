@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+<div th:each="person : ${people}" > <!-- Для каждого объекта -->
+    <a th:href="@{/people/{id}(id=${person.getId()})}"
+       th:text="${person.getName() + ', ' + person.getAge()}">user</a>
+    <!-- динамически генерируем id и правильный адрес для перехода а так же поля, заменяя ими "user" -->
+</div>
+<br/> <!-- Отступ -->
+<hr/> <!-- Линия -->
+
+<a href="/people/new">Create a new person</a>
+</body>
+</html>
